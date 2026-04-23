@@ -37,8 +37,8 @@ The goal was to create a clean, modern, fully animated, and accessible interface
 
 ## 🌐 Live Demo
 
-- **Portfolio:** [Add your live link here](https://your-portfolio-link.com)
-- **Repository:** [GC-portfolio](https://github.com/gcangemi1997-coder/GC-portfolio)
+- **Portfolio:** https://gc-portfolio-eta.vercel.app/
+- **Repository:** https://github.com/gcangemi1997-coder/GC-portfolio
 
 ***
 
@@ -194,8 +194,8 @@ Open [http://localhost:3000](http://localhost:3000) in your browser.
 ## 📫 Contact
 
 - **GitHub:** [gcangemi1997-coder](https://github.com/gcangemi1997-coder)
-- **LinkedIn:** [Add your LinkedIn here](https://www.linkedin.com/)
-- **Email:** your.email@example.com
+- **LinkedIn:** https://www.linkedin.com/in/giorgio-cangemi-7b4b77172/
+- **Email:** g.cangemi1997@gmail.com
 
 ***
 
