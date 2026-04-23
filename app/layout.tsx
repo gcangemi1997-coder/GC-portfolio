@@ -28,6 +28,12 @@ export const metadata: Metadata = {
     title: 'Giorgio Cangemi | Full Stack Developer',
     description: 'Full-Stack Web Developer from Palermo. Building responsive, modern web applications.',
     siteName: 'Giorgio Cangemi Portfolio',
+    images: [
+      {
+        url: '/preview-portfolio.png',
+        width: 1200,
+        height: 630,
+      },
   },
   twitter: {
     card: 'summary_large_image',
