@@ -24,7 +24,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: 'website',
     locale: 'en_US',
-    url: 'https://gcangemi1997-coder.github.io/',
+    url: 'https://gc-portfolio-eta.vercel.app/',
     title: 'Giorgio Cangemi | Full Stack Developer',
     description: 'Full-Stack Web Developer from Palermo. Building responsive, modern web applications.',
     siteName: 'Giorgio Cangemi Portfolio',
@@ -49,7 +49,7 @@ export const metadata: Metadata = {
     ],
   },
   icons: {
-    icon: 'https://gc-portfolio-eta.vercel.app/favicon.ico',
+    icon: '/favicon.ico',
   },
 };
   
