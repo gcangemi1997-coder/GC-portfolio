@@ -73,35 +73,6 @@ The portfolio is structured into the following sections:
 
 ***
 
-## 🏷️ Skills Badges
-
-### Core Stack
-
-
-
-
-
-### Styling
-
-
-
-
-### Libraries & Tools
-
-
-
-
-
-
-### Dev & Deployment
-
-
-
-
-
-
-***
-
 ## 🏗️ Project Structure
 
 ```bash
@@ -130,36 +101,6 @@ GC-portfolio/
 ├── tsconfig.json
 └── package.json
 ```
-
-***
-
-## 🚀 Getting Started
-
-### 1. Clone the repository
-
-```bash
-git clone https://github.com/gcangemi1997-coder/GC-portfolio.git
-```
-
-### 2. Move into the project folder
-
-```bash
-cd GC-portfolio
-```
-
-### 3. Install dependencies
-
-```bash
-pnpm install
-```
-
-### 4. Start the development server
-
-```bash
-pnpm dev
-```
-
-Open [http://localhost:3000](http://localhost:3000) in your browser.
 
 ***
 
