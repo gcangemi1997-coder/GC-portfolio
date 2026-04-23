@@ -1,35 +1,204 @@
-# GC-portfolio
+# 🌐 GC Portfolio
 
-This is a [Next.js](https://nextjs.org) project bootstrapped with [v0](https://v0.app).
+<p align="center">
+  <img src="https://img.shields.io/badge/Next.js_16-000000?style=for-the-badge&logo=nextdotjs&logoColor=white" alt="Next.js" />
+  <img src="https://img.shields.io/badge/React_19-20232A?style=for-the-badge&logo=react&logoColor=61DAFB" alt="React" />
+  <img src="https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white" alt="TypeScript" />
+  <img src="https://img.shields.io/badge/Tailwind_CSS_v4-06B6D4?style=for-the-badge&logo=tailwindcss&logoColor=white" alt="Tailwind CSS" />
+  <img src="https://img.shields.io/badge/Framer_Motion-EF0082?style=for-the-badge&logo=framer&logoColor=white" alt="Framer Motion" />
+  <img src="https://img.shields.io/badge/Radix_UI-161618?style=for-the-badge&logo=radixui&logoColor=white" alt="Radix UI" />
+  <img src="https://img.shields.io/badge/Vercel-000000?style=for-the-badge&logo=vercel&logoColor=white" alt="Vercel" />
+</p>
 
-## Built with v0
+<p align="center">
+  <strong>Personal developer portfolio of Giorgio Cangemi — Full Stack Developer based in Palermo, Italy.</strong><br />
+  Built with Next.js 16, React 19, TypeScript, Tailwind CSS v4, and Framer Motion.
+</p>
 
-This repository is linked to a [v0](https://v0.app) project. You can continue developing by visiting the link below -- start new chats to make changes, and v0 will push commits directly to this repo. Every merge to `main` will automatically deploy.
+***
 
-[Continue working on v0 →](https://v0.app/chat/projects/prj_u4pCDCjAvzA0uCiNqQqIal2EUPtV)
+## 📌 Overview
 
-## Getting Started
+This is my personal portfolio website, designed and developed from scratch to present my skills, projects, and professional background as a full-stack web developer.
 
-First, run the development server:
+The goal was to create a clean, modern, fully animated, and accessible interface — a professional online presence for recruiters and fellow developers.
+
+***
+
+## 🖼️ Preview
+
+> Add a screenshot or GIF of your portfolio here once deployed.
+
+```md
+![GC Portfolio Preview](./public/preview.png)
+```
+
+***
+
+## 🌐 Live Demo
+
+- **Portfolio:** [Add your live link here](https://your-portfolio-link.com)
+- **Repository:** [GC-portfolio](https://github.com/gcangemi1997-coder/GC-portfolio)
+
+***
+
+## ✨ Sections
+
+The portfolio is structured into the following sections:
+
+| Section | Description |
+|---------|-------------|
+| 🦸 **Hero** | Introduction, title, and CTA |
+| 👤 **About** | Personal background and developer profile |
+| 🛠️ **Skills** | Technologies and tools |
+| 💼 **Projects** | Featured personal and training projects |
+| 📅 **Experience** | Education and learning journey |
+| 📬 **Contact** | Contact form and social links |
+| 🔗 **Footer** | Links and copyright |
+
+***
+
+## 🧰 Tech Stack
+
+| Category | Technology |
+|----------|------------|
+| Framework | Next.js 16 |
+| Library | React 19 |
+| Language | TypeScript |
+| Styling | Tailwind CSS v4 |
+| Animations | Framer Motion |
+| UI Components | Radix UI, shadcn/ui |
+| Form Handling | React Hook Form + Zod |
+| Icons | Lucide React |
+| Theme | next-themes (dark/light mode) |
+| Analytics | Vercel Analytics |
+| Package Manager | pnpm |
+| Deployment | Vercel |
+
+***
+
+## 🏷️ Skills Badges
+
+### Core Stack
+
+
+
+
+
+### Styling
+
+
+
+
+### Libraries & Tools
+
+
+
+
+
+
+### Dev & Deployment
+
+
+
+
+
+
+***
+
+## 🏗️ Project Structure
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
+GC-portfolio/
+├── app/                      # Next.js App Router (pages and layouts)
+├── components/
+│   ├── portfolio/            # Portfolio sections
+│   │   ├── hero.tsx
+│   │   ├── about.tsx
+│   │   ├── skills.tsx
+│   │   ├── projects.tsx
+│   │   ├── experience.tsx
+│   │   ├── contact.tsx
+│   │   ├── header.tsx
+│   │   └── footer.tsx
+│   ├── ui/                   # shadcn/ui components
+│   └── theme-provider.tsx
+├── hooks/                    # Custom React hooks
+├── lib/                      # Utility functions
+├── public/                   # Static assets
+├── styles/                   # Global styles
+├── components.json           # shadcn/ui config
+├── next.config.mjs
+├── postcss.config.mjs
+├── tailwind.config
+├── tsconfig.json
+└── package.json
+```
+
+***
+
+## 🚀 Getting Started
+
+### 1. Clone the repository
+
+```bash
+git clone https://github.com/gcangemi1997-coder/GC-portfolio.git
+```
+
+### 2. Move into the project folder
+
+```bash
+cd GC-portfolio
+```
+
+### 3. Install dependencies
+
+```bash
+pnpm install
+```
+
+### 4. Start the development server
+
+```bash
 pnpm dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+***
 
-## Learn More
+## 🎯 What This Portfolio Demonstrates
 
-To learn more, take a look at the following resources:
+- Component-based architecture with Next.js App Router
+- Advanced TypeScript usage across the entire codebase
+- Smooth animations with Framer Motion
+- Accessible and composable UI via Radix UI and shadcn/ui
+- Clean form handling with React Hook Form and Zod validation
+- Dark/light mode theming with next-themes
+- Responsive design with Tailwind CSS v4
+- Analytics integration via Vercel Analytics
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-- [v0 Documentation](https://v0.app/docs) - learn about v0 and how to use it.
+***
 
-<a href="https://v0.app/chat/api/kiro/clone/gcangemi1997-coder/GC-portfolio" alt="Open in Kiro"><img src="https://pdgvvgmkdvyeydso.public.blob.vercel-storage.com/open%20in%20kiro.svg?sanitize=true" /></a>
+## 📖 What I Practiced
+
+- Next.js 16 App Router structure
+- TypeScript with React components
+- Tailwind CSS v4 with custom design tokens
+- Animation patterns with Framer Motion
+- Building accessible UI components
+- Deployment and CI on Vercel
+
+***
+
+## 📫 Contact
+
+- **GitHub:** [gcangemi1997-coder](https://github.com/gcangemi1997-coder)
+- **LinkedIn:** [Add your LinkedIn here](https://www.linkedin.com/)
+- **Email:** your.email@example.com
+
+***
+
+## ⭐ Support
+
+If you like this project, feel free to leave a star on the repository!
