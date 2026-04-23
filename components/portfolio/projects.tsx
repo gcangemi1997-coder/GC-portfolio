@@ -8,37 +8,45 @@ import { Button } from "@/components/ui/button"
 
 const featuredProjects = [
   {
-    title: "DnA Project",
+    title: "Elite News",
     description:
-      "A modern website built with HTML and CSS, focused on clean design and smooth user experience. Features responsive layouts and modern CSS techniques.",
-    image: "/images/dna.png",
-    tech: ["HTML5", "CSS3", "JavaScript", "Responsive Design"],
-    liveUrl: "https://gcangemi1997-coder.github.io/DnA_Project/index.html",
-    githubUrl: "https://github.com/gcangemi1997-coder/DnA_Project",
+      "A bold Neo-Brutalist news aggregator built with React and the New York Times API. Features real-time news fetching, category navigation, dedicated article detail pages, and global state management with Context API.",
+    image: "/images/elite-news.jpg",
+    tech: ["React", "Vite", "Axios", "Context API", "CSS Modules"],
+    liveUrl: "https://elite-news.vercel.app/",
+    githubUrl: "https://github.com/gcangemi1997-coder/Elite-News",
   },
   {
-    title: "GreenEarth",
+    title: "Owly App",
     description:
-      "An eco-themed landing page demonstrating responsive layout with Flexbox and CSS animations. Built with sustainability in mind, showcasing environmental awareness.",
-    image: "/images/greenearth.png",
-    tech: ["HTML5", "CSS3", "Flexbox", "CSS Animations"],
-    liveUrl: "https://gcangemi1997-coder.github.io/GreenEarth_Project/index.html",
-    githubUrl: "https://github.com/gcangemi1997-coder/GreenEarth_Project",
+      "A professional EdTech SaaS platform for exploring educational books using the Open Library API. Built with modular architecture, featuring skeleton loaders, smart caching, graceful error handling, and unit testing with Vitest.",
+    image: "/images/owly-app.jpg",
+    tech: ["JavaScript", "Vite", "Axios", "Lodash", "Vitest"],
+    liveUrl: "https://owly-app.vercel.app/",
+    githubUrl: "https://github.com/gcangemi1997-coder/Owly-App",
   },
 ]
 
 const otherProjects = [
   {
+    title: "DnA Project",
+    description: "A modern website built with HTML and CSS, focused on clean design and smooth user experience with responsive layouts.",
+    tech: ["HTML5", "CSS3", "JavaScript"],
+    githubUrl: "https://github.com/gcangemi1997-coder/DnA_Project",
+    liveUrl: "https://gcangemi1997-coder.github.io/DnA_Project/index.html",
+  },
+  {
+    title: "GreenEarth",
+    description: "An eco-themed landing page demonstrating responsive layout with Flexbox and CSS animations.",
+    tech: ["HTML5", "CSS3", "Flexbox"],
+    githubUrl: "https://github.com/gcangemi1997-coder/GreenEarth_Project",
+    liveUrl: "https://gcangemi1997-coder.github.io/GreenEarth_Project/index.html",
+  },
+  {
     title: "Portfolio Website",
     description: "My personal portfolio showcasing my projects and skills as a Full Stack Developer.",
     tech: ["Next.js", "React", "Tailwind CSS"],
     githubUrl: "https://github.com/gcangemi1997-coder/gcangemi1997-coder.github.io",
-  },
-  {
-    title: "Coming Soon",
-    description: "More exciting projects are in development. Stay tuned for updates!",
-    tech: ["React", "Node.js", "MongoDB"],
-    githubUrl: "#",
   },
 ]
 
@@ -169,6 +177,17 @@ function OtherProject({
           >
             <Github className="h-5 w-5" />
           </a>
+          {project.liveUrl && (
+            <a
+              href={project.liveUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-muted-foreground hover:text-primary transition-colors"
+              aria-label="View live project"
+            >
+              <ExternalLink className="h-5 w-5" />
+            </a>
+          )}
         </div>
       </div>
       <h3 className="text-lg font-semibold text-foreground group-hover:text-primary transition-colors mb-2">
@@ -219,7 +238,7 @@ export function Projects() {
               Other Noteworthy Projects
             </h3>
           </div>
-          <div className="grid sm:grid-cols-2 gap-4">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {otherProjects.map((project, index) => (
               <OtherProject key={project.title} project={project} index={index} />
             ))}
