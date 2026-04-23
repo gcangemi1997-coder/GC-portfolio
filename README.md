@@ -30,7 +30,7 @@ The goal was to create a clean, modern, fully animated, and accessible interface
 > Add a screenshot or GIF of your portfolio here once deployed.
 
 ```md
-![GC Portfolio Preview](./public/preview.png)
+./public/images/portfolio-preview.png
 ```
 
 ***
