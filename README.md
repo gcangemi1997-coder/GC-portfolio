@@ -27,9 +27,7 @@ The goal was to create a clean, modern, fully animated, and accessible interface
 
 ## 🖼️ Preview
 
-```md
 public/images/portfolio-preview.png
-```
 
 ***
 
