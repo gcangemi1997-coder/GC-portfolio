@@ -30,7 +30,7 @@ export const metadata: Metadata = {
     siteName: 'Giorgio Cangemi Portfolio',
     images: [
       {
-        url: 'https://github.com/gcangemi1997-coder/GC-portfolio/app/portfolio-preview.png',
+        url: 'https://github.com/gcangemi1997-coder/GC-portfolio/public/portfolio-preview.png',
         width: 1200,
         height: 630,
       },
@@ -42,14 +42,14 @@ export const metadata: Metadata = {
     description: 'Full-Stack Web Developer from Palermo. Building responsive, modern web applications.',
     images: [
       {
-        url: '/portfolio-preview.png',
+        url: 'https://github.com/gcangemi1997-coder/GC-portfolio/public/portfolio-preview.png',
         width: 1200,
         height: 630,
       },
     ],
   },
   icons: {
-    icon: '/favicon.ico',
+    icon: 'https://github.com/gcangemi1997-coder/GC-portfolio/public/favicon.ico',
   },
 };
   
