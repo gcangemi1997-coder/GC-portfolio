@@ -30,7 +30,7 @@ export const metadata: Metadata = {
     siteName: 'Giorgio Cangemi Portfolio',
     images: [
       {
-        url: '/preview-portfolio.png',
+        url: '/portfolio-preview.png',
         width: 1200,
         height: 630,
       },
