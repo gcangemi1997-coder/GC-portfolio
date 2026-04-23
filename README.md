@@ -27,10 +27,8 @@ The goal was to create a clean, modern, fully animated, and accessible interface
 
 ## 🖼️ Preview
 
-> Add a screenshot or GIF of your portfolio here once deployed.
-
 ```md
-/public/images/portfolio-preview.png
+public/images/portfolio-preview.png
 ```
 
 ***
