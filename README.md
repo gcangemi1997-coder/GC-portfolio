@@ -11,7 +11,7 @@
 </p>
 
 <p align="center">
-  <strong>Personal developer portfolio of Giorgio Cangemi — Full Stack Developer based in Palermo, Italy.</strong><br />
+  <strong>Personal developer portfolio of Giorgio Cangemi — Full Stack Developer based in Milano, Italy.</strong><br />
   Built with Next.js 16, React 19, TypeScript, Tailwind CSS v4, and Framer Motion.
 </p>
 
