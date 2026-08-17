@@ -18,7 +18,7 @@ const jetbrainsMono = JetBrains_Mono({
 export const metadata: Metadata = {
   title: 'Giorgio Cangemi | Full Stack Developer',
   description: 'Full-Stack Web Developer from Palermo. Building responsive, modern web applications with React, Next.js, and more. Check out my projects and get in touch!',
-  keywords: ['Full Stack Developer', 'Web Developer', 'React', 'Next.js', 'JavaScript', 'TypeScript', 'Palermo', 'Portfolio'],
+  keywords: ['Full Stack Developer', 'Web Developer', 'React', 'Next.js', 'JavaScript', 'TypeScript', 'Milano', 'Portfolio'],
   authors: [{ name: 'Giorgio Cangemi' }],
   creator: 'Giorgio Cangemi',
   openGraph: {
@@ -52,7 +52,7 @@ export const metadata: Metadata = {
     icon: '/favicon.ico',
   },
 };
-  
+
 
 export const viewport: Viewport = {
   themeColor: '#15fdc0',
