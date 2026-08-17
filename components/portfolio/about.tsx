@@ -107,7 +107,7 @@ export function About() {
               {/* Quick Info with staggered icons */}
               <motion.div variants={itemVariants} className="flex flex-wrap gap-6 pt-4">
                 {[
-                  { Icon: MapPin, text: "Palermo, Italy" },
+                  { Icon: MapPin, text: "Milano, Italy" },
                   { Icon: Calendar, text: "Available for hire" },
                   { Icon: Code2, text: "Full Stack Focus" },
                 ].map(({ Icon, text }, i) => (

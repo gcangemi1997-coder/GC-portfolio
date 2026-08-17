@@ -277,7 +277,7 @@ export function Contact() {
                       transition={{ delay: 1.2 }}
                     >
                       <MapPin className="h-4 w-4" />
-                      Palermo, Italy
+                      Milano, Italy
                     </motion.span>
                   </div>
                 </motion.div>
