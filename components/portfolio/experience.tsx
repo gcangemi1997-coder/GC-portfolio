@@ -17,18 +17,7 @@ const experiences = [
       "Collaborating with clients to understand requirements and deliver tailored solutions",
     ],
   },
-  {
-    id: "internship",
-    company: "Web Agency XYZ",
-    title: "Front-end Intern",
-    date: "2025",
-    description: [
-      "Supported the development team in maintaining e-commerce portals",
-      "Implemented new UI features using HTML, CSS, and JavaScript",
-      "Participated in code reviews and learned best practices from senior developers",
-      "Gained experience with version control using Git and collaborative workflows",
-    ],
-  },
+
   {
     id: "education",
     company: "Start2Impact University",
@@ -157,7 +146,7 @@ export function Experience() {
                   animate={{ y: 0 }}
                   transition={{ delay: 0.1 }}
                 >
-                  {activeExperience.title}{" "}
+                  {activeExperience.id === "freelance" ? "Full Stack Developer" : activeExperience.title}{" "}
                   <motion.span
                     className="text-primary"
                     whileHover={{ scale: 1.05 }}
