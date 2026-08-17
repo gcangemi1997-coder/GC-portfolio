@@ -8,13 +8,13 @@ import { Button } from "@/components/ui/button"
 
 const featuredProjects = [
   {
-    title: "Elite News",
+    title: "LookBook - AI",
     description:
-      "A bold Neo-Brutalist news aggregator built with React and the New York Times API. Features real-time news fetching, category navigation, dedicated article detail pages, and global state management with Context API.",
-    image: "/images/elite-news.jpg",
-    tech: ["React", "Vite", "Axios", "Context API", "CSS Modules"],
-    liveUrl: "https://elite-news.vercel.app/",
-    githubUrl: "https://github.com/gcangemi1997-coder/Elite-News",
+      "LookBook AI is a full-stack web application that lets users get an instant AI-powered price estimate for their used clothing and fashion accessories. Upload a photo, fill in a few details, and let Google Gemini do the rest.",
+    image: "/images/lookbook-ai.png",
+    tech: ["Next.js", "Google Gemini API", "Tailwind CSS", "TypeScript", "Vercel AI SDK"],
+    liveUrl: "https://lookbook-ai.vercel.app/",
+    githubUrl: "https://github.com/gcangemi1997-coder/LookBook-AI",
   },
   {
     title: "Owly App",
