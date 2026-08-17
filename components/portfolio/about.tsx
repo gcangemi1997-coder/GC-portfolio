@@ -78,7 +78,7 @@ export function About() {
               {[
                 <>
                   Hello! I&apos;m Giorgio, a passionate web developer based in{" "}
-                  <span className="text-primary">Palermo, Italy</span>. I enjoy creating things
+                  <span className="text-primary">Milano, Italy</span>. I enjoy creating things
                   that live on the internet, whether that be websites, applications, or anything
                   in between. My goal is to always build products that provide pixel-perfect,
                   performant experiences.
