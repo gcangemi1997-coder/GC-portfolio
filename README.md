@@ -33,7 +33,7 @@ The goal was to create a clean, modern, fully animated, and accessible interface
 
 ## 🌐 Live Demo
 
-- **Portfolio:** https://gc-portfolio-eta.vercel.app/
+- **Portfolio:** https://gc-portfolio-eta.vercel.app/](https://v0-gc-portfolio-leyoblai8-gcangemi1997-9235s-projects.vercel.app/
 - **Repository:** https://github.com/gcangemi1997-coder/GC-portfolio
 
 ***
