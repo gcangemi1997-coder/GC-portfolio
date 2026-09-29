@@ -165,8 +165,8 @@ export function About() {
                     } : {}}
                     transition={{ duration: 2, repeat: Infinity }}
                   >
-                    GC
-                  </motion.span>
+<img src="/images/profile.png" alt="Giorgio Cangemi" className="size-full rounded-full object-cover" />
+</motion.span>
                 </motion.div>
               </motion.div>
               {/* Decorative corner with animation */}
