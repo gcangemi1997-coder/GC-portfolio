@@ -60,7 +60,11 @@ function ScratchCard({ project, active, onReveal }: { project: (typeof projects)
   function scratch(event: PointerEvent<HTMLDivElement>) {
     const rect = event.currentTarget.getBoundingClientRect()
     const point = { x: ((event.clientX - rect.left) / rect.width) * 100, y: ((event.clientY - rect.top) / rect.height) * 100 }
-    setScratches((current) => [...current.slice(-54), point])
+    setScratches((current) => {
+      // Keep every scratch so revealed areas never become covered again.
+      if (current.some((scratchPoint) => Math.hypot(scratchPoint.x - point.x, scratchPoint.y - point.y) < 2.5)) return current
+      return [...current, point]
+    })
     onReveal()
   }
 
@@ -72,9 +76,9 @@ function ScratchCard({ project, active, onReveal }: { project: (typeof projects)
       <svg className="pointer-events-none absolute inset-0 size-full" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
         <defs>
           <linearGradient id="scratch-cover" x1="0" y1="0" x2="1" y2="1">
-            <stop offset="0%" stopColor="#cbd5e1" />
-            <stop offset="50%" stopColor="#64748b" />
-            <stop offset="100%" stopColor="#334155" />
+            <stop offset="0%" stopColor="#22d3ee" />
+            <stop offset="48%" stopColor="#6366f1" />
+            <stop offset="100%" stopColor="#c026d3" />
           </linearGradient>
           <mask id={maskId}>
             <rect width="100" height="100" fill="white" />
