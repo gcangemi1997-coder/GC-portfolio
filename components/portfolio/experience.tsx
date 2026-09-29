@@ -18,22 +18,10 @@ const experiences = [
     ],
   },
   {
-    id: "internship",
-    company: "Web Agency XYZ",
-    title: "Front-end Intern",
-    date: "2025",
-    description: [
-      "Supported the development team in maintaining e-commerce portals",
-      "Implemented new UI features using HTML, CSS, and JavaScript",
-      "Participated in code reviews and learned best practices from senior developers",
-      "Gained experience with version control using Git and collaborative workflows",
-    ],
-  },
-  {
     id: "education",
     company: "Start2Impact University",
     title: "Master in Full Stack Development",
-    date: "2025",
+    date: "2026",
     description: [
       "Completed intensive training in React, Node.js, and modern web technologies",
       "Built full-stack applications following Agile methodologies",
@@ -86,7 +74,7 @@ export function Experience() {
                 animate={isInView ? { scale: [1, 1.2, 1] } : {}}
                 transition={{ duration: 0.5, delay: 0.3 }}
               >
-                04.
+                03.
               </motion.span>{" "}
               Experience
             </h2>

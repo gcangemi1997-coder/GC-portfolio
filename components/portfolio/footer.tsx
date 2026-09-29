@@ -27,7 +27,7 @@ export function Footer() {
 
   return (
     <footer className="py-12 px-4 border-t border-border relative">
-      <div className="max-w-5xl mx-auto">
+      <div className="mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-8">
         {/* Social Links - Mobile */}
         <div className="flex justify-center gap-6 mb-8 md:hidden">
           {socialLinks.map((link, i) => (
@@ -83,7 +83,7 @@ export function Footer() {
           initial={{ opacity: 0, x: -20 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ delay: 1.5 }}
-          className="fixed left-8 bottom-0 flex flex-col items-center gap-6"
+          className="fixed left-8 bottom-0 flex flex-col items-center gap-6 xl:left-10 2xl:left-14"
         >
           {socialLinks.map((link, i) => (
             <motion.a
@@ -120,7 +120,7 @@ export function Footer() {
           initial={{ opacity: 0, x: 20 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ delay: 1.5 }}
-          className="fixed right-8 bottom-0 flex flex-col items-center gap-6"
+          className="fixed right-8 bottom-0 flex flex-col items-center gap-6 xl:right-10 2xl:right-14"
         >
           <motion.a
             href="mailto:g.cangemi1997@gmail.com"
