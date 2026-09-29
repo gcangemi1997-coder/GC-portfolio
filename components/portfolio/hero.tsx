@@ -1,228 +1,129 @@
 "use client"
 
+import Image from "next/image"
 import { motion, useScroll, useTransform } from "framer-motion"
-import { useRef } from "react"
-import { ArrowDown, Github, Linkedin, Mail, Sparkles } from "lucide-react"
+import { useRef, useState } from "react"
+import { ArrowDown, ArrowUpRight, Github, Linkedin, Mail, Sparkles } from "lucide-react"
 import { Button } from "@/components/ui/button"
 
-export function Hero() {
-  const ref = useRef(null)
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ["start start", "end start"],
-  })
+const projects = [
+  {
+    title: "MMG Burger",
+    problem: "A complete ordering and shop-management experience for a sandwich business, bringing menu discovery, orders, and operations into one fast web app.",
+    tech: ["React", "Node.js", "Express", "MongoDB", "Vercel"],
+    image: "/images/portfolio-preview.png",
+    demo: "https://mmg-burger.vercel.app/",
+    github: "https://github.com/gcangemi1997-coder/MMG_Burger",
+    accent: "from-orange-400/80 to-rose-500/80",
+  },
+  {
+    title: "LookBook AI",
+    problem: "An AI-assisted way to estimate the value of pre-owned clothing, helping people make faster, more informed resale decisions.",
+    tech: ["React", "Node.js", "AI", "MongoDB", "Vercel"],
+    image: "/images/portfolio-preview.png",
+    demo: "https://lookbook-ai.vercel.app/",
+    github: "https://github.com/gcangemi1997-coder/lookbook-AI",
+    accent: "from-fuchsia-400/80 to-violet-500/80",
+  },
+  {
+    title: "Elite News",
+    problem: "A focused news experience that turns the New York Times API into a bold, browsable aggregator with categories and article detail pages.",
+    tech: ["React", "Vite", "Axios", "Context API", "CSS Modules"],
+    image: "/images/elite-news.jpg",
+    demo: "https://elite-news.vercel.app/",
+    github: "https://github.com/gcangemi1997-coder/Elite-News",
+    accent: "from-cyan-400/80 to-blue-500/80",
+  },
+  {
+    title: "weather_dashboard",
+    problem: "A clear, useful weather dashboard that makes live forecasts and changing conditions easier to understand at a glance.",
+    tech: ["JavaScript", "HTML", "CSS", "Weather API"],
+    image: "/images/greenearth.png",
+    demo: "https://weather-dashboard-gcangemi.vercel.app/",
+    github: "https://github.com/gcangemi1997-coder/weather_dashboard",
+    accent: "from-amber-300/80 to-cyan-400/80",
+  },
+  {
+    title: "Owly App",
+    problem: "An EdTech discovery platform that makes educational books easier to explore through smart search, caching, loading states, and resilient UX.",
+    tech: ["JavaScript", "Vite", "Axios", "Lodash", "Vitest"],
+    image: "/images/owly-app.jpg",
+    demo: "https://owly-app.vercel.app/",
+    github: "https://github.com/gcangemi1997-coder/Owly-App",
+    accent: "from-violet-400/80 to-indigo-500/80",
+  },
+]
 
-  const y = useTransform(scrollYProgress, [0, 1], ["0%", "50%"])
-  const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0])
-  const scale = useTransform(scrollYProgress, [0, 0.5], [1, 0.8])
+export function Hero() {
+  const ref = useRef<HTMLElement>(null)
+  const [activeProject, setActiveProject] = useState(0)
+  const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end start"] })
+  const screenScale = useTransform(scrollYProgress, [0.08, 0.7], [0.72, 1.16])
+  const screenY = useTransform(scrollYProgress, [0, 0.7], [40, -10])
+  const heroOpacity = useTransform(scrollYProgress, [0.55, 0.78], [1, 0])
 
   return (
-    <section
-      ref={ref}
-      className="relative min-h-screen flex items-center justify-center px-4 pt-20 overflow-hidden"
-    >
-      {/* Animated Background Elements */}
-      <div className="absolute inset-0 overflow-hidden">
-        <motion.div
-          animate={{
-            scale: [1, 1.2, 1],
-            rotate: [0, 90, 0],
-          }}
-          transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-          className="absolute top-1/4 -left-1/4 w-1/2 h-1/2 bg-primary/10 rounded-full blur-3xl"
-        />
-        <motion.div
-          animate={{
-            scale: [1.2, 1, 1.2],
-            rotate: [0, -90, 0],
-          }}
-          transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
-          className="absolute bottom-1/4 -right-1/4 w-1/2 h-1/2 bg-primary/5 rounded-full blur-3xl"
-        />
-        {/* Floating particles */}
-        {[...Array(6)].map((_, i) => (
-          <motion.div
-            key={i}
-            className="absolute w-2 h-2 bg-primary/30 rounded-full"
-            style={{
-              left: `${20 + i * 15}%`,
-              top: `${30 + (i % 3) * 20}%`,
-            }}
-            animate={{
-              y: [-20, 20, -20],
-              x: [-10, 10, -10],
-              opacity: [0.3, 0.8, 0.3],
-            }}
-            transition={{
-              duration: 4 + i,
-              repeat: Infinity,
-              ease: "easeInOut",
-              delay: i * 0.5,
-            }}
-          />
-        ))}
-      </div>
+    <section ref={ref} className="relative min-h-[260vh] overflow-hidden" id="home">
+      <div className="sticky top-0 flex min-h-screen items-center justify-center overflow-hidden px-4 pt-20">
+        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,color-mix(in_oklab,var(--primary)_20%,transparent),transparent_28%),radial-gradient(circle_at_80%_0%,color-mix(in_oklab,var(--accent)_18%,transparent),transparent_32%)]" />
+        <motion.div className="relative z-10 w-full max-w-7xl" style={{ opacity: heroOpacity }}>
+          <div className="grid items-center gap-10 lg:grid-cols-[0.82fr_1.18fr]">
+            <div className="max-w-xl">
+              <motion.div initial={{ opacity: 0, y: 18 }} animate={{ opacity: 1, y: 0 }} className="mb-5 flex items-center gap-2 font-mono text-sm text-primary">
+                <Sparkles className="size-4" /> Available for meaningful builds
+              </motion.div>
+              <motion.h1 initial={{ opacity: 0, y: 22 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 }} className="text-balance text-5xl font-semibold tracking-[-0.07em] text-foreground sm:text-7xl lg:text-8xl">
+                Giorgio <span className="bg-gradient-to-r from-primary via-cyan-300 to-accent bg-clip-text text-transparent">Cangemi</span>
+              </motion.h1>
+              <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.35 }} className="mt-6 max-w-lg text-lg leading-relaxed text-muted-foreground">
+                Full Stack Developer crafting fast, thoughtful digital products where engineering meets visual clarity.
+              </motion.p>
+              <div className="mt-8 flex flex-wrap gap-3">
+                <Button asChild size="lg"><a href="#selected-work">Explore my work <ArrowDown data-icon="inline-end" /></a></Button>
+                <Button asChild variant="outline" size="lg"><a href="/resume.pdf" download>Download CV</a></Button>
+              </div>
+              <div className="mt-9 flex items-center gap-5 text-muted-foreground">
+                <a href="https://github.com/gcangemi1997-coder" target="_blank" rel="noreferrer" aria-label="GitHub profile"><Github className="size-5 transition-colors hover:text-primary" /></a>
+                <a href="https://www.linkedin.com/in/giorgio-cangemi" target="_blank" rel="noreferrer" aria-label="LinkedIn profile"><Linkedin className="size-5 transition-colors hover:text-primary" /></a>
+                <a href="mailto:g.cangemi1997@gmail.com" aria-label="Email Giorgio"><Mail className="size-5 transition-colors hover:text-primary" /></a>
+              </div>
+            </div>
 
-      <motion.div
-        style={{ y, opacity, scale }}
-        className="relative z-10 max-w-4xl mx-auto text-center"
-      >
-        {/* Greeting with sparkle */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, ease: "easeOut" }}
-          className="flex items-center justify-center gap-2 mb-4"
-        >
-          <motion.div
-            animate={{ rotate: [0, 15, -15, 0] }}
-            transition={{ duration: 2, repeat: Infinity }}
-          >
-            <Sparkles className="h-4 w-4 text-primary" />
-          </motion.div>
-          <p className="text-primary font-mono text-sm md:text-base">
-            Hello, my name is
-          </p>
-        </motion.div>
-
-        {/* Name with letter animation */}
-        <motion.h1
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.5, delay: 0.2 }}
-          className="text-4xl sm:text-5xl md:text-7xl font-bold text-foreground mb-4 text-balance"
-        >
-          {"Giorgio Cangemi".split("").map((char, i) => (
-            <motion.span
-              key={i}
-              initial={{ opacity: 0, y: 50, rotateX: -90 }}
-              animate={{ opacity: 1, y: 0, rotateX: 0 }}
-              transition={{
-                duration: 0.5,
-                delay: 0.3 + i * 0.03,
-                ease: "easeOut",
-              }}
-              className="inline-block"
-              style={{ display: char === " " ? "inline" : "inline-block" }}
-            >
-              {char === " " ? "\u00A0" : char}
-            </motion.span>
-          ))}
-        </motion.h1>
-
-        {/* Title with gradient reveal */}
-        <motion.h2
-          initial={{ opacity: 0, y: 20, clipPath: "inset(0 100% 0 0)" }}
-          animate={{ opacity: 1, y: 0, clipPath: "inset(0 0% 0 0)" }}
-          transition={{ duration: 0.8, delay: 0.8, ease: "easeOut" }}
-          className="text-2xl sm:text-3xl md:text-5xl font-bold text-muted-foreground mb-6"
-        >
-          Full Stack Developer
-        </motion.h2>
-
-        {/* Description */}
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 1 }}
-          className="text-muted-foreground text-base md:text-lg max-w-2xl mx-auto mb-8 leading-relaxed"
-        >
-          I build exceptional digital experiences that live on the web.
-          Currently focused on building responsive, accessible, and performant
-          web applications with modern technologies.
-        </motion.p>
-
-        {/* CTA Buttons with stagger */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 1.2 }}
-          className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12"
-        >
-          <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-            <Button asChild size="lg" className="w-full sm:w-auto relative overflow-hidden group">
-              <a href="#projects">
-                <span className="relative z-10">View My Work</span>
-                <motion.div
-                  className="absolute inset-0 bg-primary/20"
-                  initial={{ x: "-100%" }}
-                  whileHover={{ x: "100%" }}
-                  transition={{ duration: 0.5 }}
-                />
-              </a>
-            </Button>
-          </motion.div>
-          <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-            <Button asChild variant="outline" size="lg" className="w-full sm:w-auto">
-              <a href="#contact">Get In Touch</a>
-            </Button>
-          </motion.div>
-        </motion.div>
-
-        {/* Social Links with bounce */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.6, delay: 1.4 }}
-          className="flex items-center justify-center gap-6"
-        >
-          {[
-            { Icon: Github, href: "https://github.com/gcangemi1997-coder", label: "GitHub Profile" },
-            { Icon: Linkedin, href: "https://www.linkedin.com/in/giorgio-cangemi-7b4b77172/", label: "LinkedIn Profile" },
-            { Icon: Mail, href: "mailto:g.cangemi1997@gmail.com", label: "Email" },
-          ].map(({ Icon, href, label }, i) => (
-            <motion.a
-              key={label}
-              href={href}
-              target={href.startsWith("mailto") ? undefined : "_blank"}
-              rel={href.startsWith("mailto") ? undefined : "noopener noreferrer"}
-              className="text-muted-foreground hover:text-primary transition-colors"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 1.5 + i * 0.1 }}
-              whileHover={{
-                scale: 1.2,
-                y: -5,
-                rotate: [0, -10, 10, 0],
-                transition: { rotate: { duration: 0.4 } },
-              }}
-              whileTap={{ scale: 0.9 }}
-              aria-label={label}
-            >
-              <Icon className="h-6 w-6" />
-            </motion.a>
-          ))}
-        </motion.div>
-
-        {/* Scroll Indicator with pulse */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 2 }}
-          className="absolute bottom-8 left-1/2 -translate-x-1/2"
-        >
-          <motion.a
-            href="#about"
-            className="text-muted-foreground hover:text-primary transition-colors block"
-            animate={{
-              y: [0, 12, 0],
-            }}
-            transition={{
-              duration: 1.5,
-              repeat: Infinity,
-              ease: "easeInOut",
-            }}
-            aria-label="Scroll to about section"
-          >
-            <motion.div
-              animate={{ scale: [1, 1.2, 1] }}
-              transition={{ duration: 1.5, repeat: Infinity }}
-            >
-              <ArrowDown className="h-6 w-6" />
+            <motion.div style={{ scale: screenScale, y: screenY }} className="relative mx-auto w-full max-w-3xl origin-center">
+              <div className="absolute -inset-10 rounded-full bg-primary/15 blur-3xl" />
+              <div className="relative overflow-hidden rounded-[1.4rem] border border-white/15 bg-black/40 p-2 shadow-[0_40px_120px_-30px_color-mix(in_oklab,var(--primary)_45%,transparent)]">
+                <div className="relative aspect-[16/10] overflow-hidden rounded-[1rem] bg-black">
+                  <Image src="/images/developer-computer.png" alt="Developer working at a computer" fill priority className="object-cover object-center" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-background/50 via-transparent to-white/5" />
+                  <div id="selected-work" className="absolute left-5 top-4 font-mono text-[10px] uppercase tracking-[0.3em] text-white/70">Selected work / 2026</div>
+                  <div className="absolute inset-x-5 bottom-5 overflow-hidden rounded-xl border border-white/15 bg-black/45 p-3 backdrop-blur-md">
+                    <div className="mb-2 flex items-center justify-between text-[10px] uppercase tracking-[0.22em] text-white/60"><span>Project archive</span><span>{String(activeProject + 1).padStart(2, "0")} / 05</span></div>
+                    <div className="flex gap-3 overflow-x-auto pb-1 [scrollbar-width:none]">
+                      {projects.map((project, index) => (
+                        <button key={project.title} onClick={() => setActiveProject(index)} className={`group min-w-[150px] flex-1 text-left transition-all duration-300 ${activeProject === index ? "scale-[1.03]" : "opacity-65 hover:opacity-100"}`} aria-pressed={activeProject === index}>
+                          <div className={`relative aspect-[1.55] overflow-hidden rounded-lg border ${activeProject === index ? "border-primary" : "border-white/15"}`}>
+                            <Image src={project.image} alt={`${project.title} project preview`} fill className="object-cover transition-transform duration-500 group-hover:scale-110" />
+                            <div className={`absolute inset-0 bg-gradient-to-br ${project.accent} mix-blend-multiply opacity-55`} />
+                            <span className="absolute left-2 top-2 text-[9px] font-medium tracking-wide text-white">{project.title}</span>
+                          </div>
+                        </button>
+                      ))}
+                    </div>
+                    <motion.div layout className="mt-3 rounded-lg border border-white/10 bg-white/5 p-3 text-white">
+                      <div className="flex flex-wrap items-start justify-between gap-3"><div><h2 className="font-medium">{projects[activeProject].title}</h2><p className="mt-1 max-w-xl text-xs leading-relaxed text-white/65">{projects[activeProject].problem}</p></div><div className="flex gap-3"><a href={projects[activeProject].demo} target="_blank" rel="noreferrer" className="inline-flex items-center gap-1 text-xs text-primary hover:underline">Demo <ArrowUpRight className="size-3" /></a><a href={projects[activeProject].github} target="_blank" rel="noreferrer" className="inline-flex items-center gap-1 text-xs text-white/80 hover:text-white">GitHub <Github className="size-3" /></a></div></div>
+                      <div className="mt-2 flex flex-wrap gap-1.5">{projects[activeProject].tech.map((tech) => <span key={tech} className="rounded-full bg-white/10 px-2 py-1 text-[10px] text-white/65">{tech}</span>)}</div>
+                    </motion.div>
+                  </div>
+                </div>
+              </div>
+              <div className="mx-auto mt-3 h-1.5 w-1/2 rounded-full bg-white/15" />
+              <div className="mx-auto h-3 w-1/4 rounded-b-full bg-white/10" />
             </motion.div>
-          </motion.a>
+          </div>
         </motion.div>
-      </motion.div>
+      </div>
     </section>
   )
 }
+
+export { projects }
