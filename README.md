@@ -31,10 +31,7 @@ The goal was to create a clean, modern, fully animated, and accessible interface
 
 ***
 
-## 🌐 Live Demo
-
-- **Portfolio:** (https://v0-gc-portfolio-leyoblai8-gcangemi1997-9235s-projects.vercel.app/
-- **Repository:** https://github.com/gcangemi1997-coder/GC-portfolio
+## [🌐 Live Demo](https://gc-portfolio-eta.vercel.app/)
 
 ***
 
@@ -130,9 +127,8 @@ GC-portfolio/
 
 ## 📫 Contact
 
-- **GitHub:** [gcangemi1997-coder](https://github.com/gcangemi1997-coder)
-- **LinkedIn:** https://www.linkedin.com/in/giorgio-cangemi-7b4b77172/
-- **Email:** g.cangemi1997@gmail.com
+- [**LinkedIn:**](https://www.linkedin.com/in/giorgio-cangemi)
+- [**Email:**](g.cangemi1997@gmail.com)
 
 ***
 
