@@ -2,7 +2,7 @@
 
 import Image from "next/image"
 import { motion, useScroll, useTransform } from "framer-motion"
-import { useRef, useState, type PointerEvent } from "react"
+import { useEffect, useRef, useState, type PointerEvent } from "react"
 import { ArrowDown, ArrowUpRight, Github, Sparkles } from "lucide-react"
 import { Button } from "@/components/ui/button"
 
@@ -77,7 +77,12 @@ function ScratchCard({ project, active, onReveal }: { project: (typeof projects)
 
 export function Hero() {
   const ref = useRef<HTMLElement>(null)
+  const [isMounted, setIsMounted] = useState(false)
   const [activeProject, setActiveProject] = useState(0)
+
+  useEffect(() => {
+    setIsMounted(true)
+  }, [])
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end start"] })
   const screenScale = useTransform(scrollYProgress, [0.08, 0.7], [0.52, 1.42])
   const screenY = useTransform(scrollYProgress, [0, 0.7], [40, -10])
@@ -118,7 +123,11 @@ export function Hero() {
                       {projects.map((project, index) => (
                         <button key={project.title} onClick={() => setActiveProject(index)} className={`group min-w-[150px] flex-1 text-left transition-all duration-300 ${activeProject === index ? "scale-[1.03]" : "opacity-65 hover:opacity-100"}`} aria-pressed={activeProject === index}>
                           <div className={`relative aspect-[1.55] overflow-hidden rounded-lg border ${activeProject === index ? "border-primary" : "border-white/15"}`}>
-                            <ScratchCard project={project} active={activeProject === index} onReveal={() => setActiveProject(index)} />
+                            {isMounted ? (
+                              <ScratchCard project={project} active={activeProject === index} onReveal={() => setActiveProject(index)} />
+                            ) : (
+                              <Image src={project.image} alt={`${project.title} project preview`} fill className="object-cover" />
+                            )}
                           </div>
                         </button>
                       ))}
