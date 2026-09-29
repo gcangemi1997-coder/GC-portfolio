@@ -83,7 +83,7 @@ export function Footer() {
           initial={{ opacity: 0, x: -20 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ delay: 1.5 }}
-          className="fixed left-3 bottom-0 flex flex-col items-center gap-6 xl:left-6 2xl:left-10"
+          className="fixed left-8 bottom-0 flex flex-col items-center gap-6 xl:left-10 2xl:left-14"
         >
           {socialLinks.map((link, i) => (
             <motion.a
@@ -120,7 +120,7 @@ export function Footer() {
           initial={{ opacity: 0, x: 20 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ delay: 1.5 }}
-          className="fixed right-3 bottom-0 flex flex-col items-center gap-6 xl:right-6 2xl:right-10"
+          className="fixed right-8 bottom-0 flex flex-col items-center gap-6 xl:right-10 2xl:right-14"
         >
           <motion.a
             href="mailto:g.cangemi1997@gmail.com"

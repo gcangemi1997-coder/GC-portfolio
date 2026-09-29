@@ -2,7 +2,7 @@
 
 import Image from "next/image"
 import { motion, useScroll, useTransform } from "framer-motion"
-import { useEffect, useRef, useState, type PointerEvent } from "react"
+import { useRef, useState, type PointerEvent } from "react"
 import { ArrowDown, ArrowUpRight, Github, Sparkles } from "lucide-react"
 import { Button } from "@/components/ui/button"
 
@@ -60,31 +60,33 @@ function ScratchCard({ project, active, onReveal }: { project: (typeof projects)
   function scratch(event: PointerEvent<HTMLDivElement>) {
     const rect = event.currentTarget.getBoundingClientRect()
     const point = { x: event.clientX - rect.left, y: event.clientY - rect.top }
-    setScratches((current) => [...current.slice(-34), point])
+    setScratches((current) => [...current.slice(-54), point])
     onReveal()
   }
 
+  const revealMask = scratches.length
+    ? scratches.map(({ x, y }) => `radial-gradient(circle 52px at ${x}px ${y}px, transparent 0 72%, #000 76%)`).join(",")
+    : "none"
+
   return (
-    <div className={`relative overflow-hidden rounded-xl border ${active ? "border-primary" : "border-white/15"}`}>
+    <div className={`relative aspect-[1.45] overflow-hidden rounded-xl border ${active ? "border-primary" : "border-white/15"}`}>
       <Image src={project.image} alt={`${project.title} project preview`} fill className="object-cover" />
-      <div className="absolute inset-0 bg-gradient-to-br from-slate-500 via-slate-400 to-slate-600 transition-opacity duration-500" style={{ opacity: Math.max(0.22, 1 - scratches.length / 34) }} />
-      <div className="absolute inset-0" onPointerMove={scratch} onPointerDown={scratch} style={{ background: scratches.map(({ x, y }) => `radial-gradient(circle 34px at ${x}px ${y}px, transparent 0 72%, rgba(148,163,184,.96) 74%)`).join(",") }} aria-label={`Scratch to reveal ${project.title}`} role="button" tabIndex={0} />
-      <span className="absolute left-3 top-3 text-[10px] font-semibold tracking-wide text-white drop-shadow-md">{project.title}</span>
-      <span className="pointer-events-none absolute bottom-2 right-2 rounded-full bg-black/45 px-2 py-1 text-[9px] uppercase tracking-widest text-white/80">Scratch</span>
+      <div
+        className="absolute inset-0 bg-gradient-to-br from-slate-300 via-slate-500 to-slate-700"
+        style={{ maskImage: revealMask, WebkitMaskImage: revealMask, filter: "blur(1px)" }}
+      />
+      <div className="absolute inset-0 cursor-crosshair" onPointerMove={scratch} onPointerDown={scratch} />
+      <span className="pointer-events-none absolute left-3 top-3 text-[10px] font-semibold tracking-wide text-white drop-shadow-md">{project.title}</span>
+      <span className="pointer-events-none absolute bottom-2 right-2 rounded-full bg-black/45 px-2 py-1 text-[9px] uppercase tracking-widest text-white/80">Passa per scoprire</span>
     </div>
   )
 }
 
 export function Hero() {
   const ref = useRef<HTMLElement>(null)
-  const [isMounted, setIsMounted] = useState(false)
   const [activeProject, setActiveProject] = useState(0)
-
-  useEffect(() => {
-    setIsMounted(true)
-  }, [])
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end start"] })
-  const screenScale = useTransform(scrollYProgress, [0.08, 0.7], [0.52, 1.42])
+  const screenScale = useTransform(scrollYProgress, [0.08, 0.7], [0.44, 1.68])
   const screenY = useTransform(scrollYProgress, [0, 0.7], [40, -10])
   const heroOpacity = useTransform(scrollYProgress, [0.55, 0.78], [1, 0])
 
@@ -92,8 +94,8 @@ export function Hero() {
     <section ref={ref} className="relative min-h-[220vh] overflow-hidden" id="home">
       <div className="sticky top-0 flex min-h-screen items-center justify-center overflow-hidden px-4 pt-20">
         <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,color-mix(in_oklab,var(--primary)_20%,transparent),transparent_28%),radial-gradient(circle_at_80%_0%,color-mix(in_oklab,var(--accent)_18%,transparent),transparent_32%)]" />
-        <motion.div className="relative z-10 mx-auto w-full max-w-6xl" style={{ opacity: heroOpacity }}>
-          <div className="grid items-center gap-10 lg:grid-cols-[0.82fr_1.18fr]">
+        <motion.div className="relative z-10 mx-auto w-full max-w-[96rem]" style={{ opacity: heroOpacity }}>
+          <div className="grid items-center gap-10 lg:grid-cols-[0.68fr_1.32fr]">
             <div className="max-w-xl">
               <motion.div initial={{ opacity: 0, y: 18 }} animate={{ opacity: 1, y: 0 }} className="mb-5 flex items-center gap-2 font-mono text-sm text-primary">
                 <Sparkles className="size-4" /> Available for meaningful builds
@@ -110,7 +112,7 @@ export function Hero() {
               </div>
             </div>
 
-            <motion.div style={{ scale: screenScale, y: screenY }} className="relative mx-auto w-full max-w-5xl origin-center">
+            <motion.div style={{ scale: screenScale, y: screenY }} className="relative mx-auto w-full max-w-[82rem] origin-center">
               <div className="absolute -inset-10 rounded-full bg-primary/15 blur-3xl" />
               <div className="relative overflow-hidden rounded-[1.4rem] border border-white/15 bg-black/40 p-2 shadow-[0_40px_120px_-30px_color-mix(in_oklab,var(--primary)_45%,transparent)]">
                 <div className="relative aspect-[16/10] overflow-hidden rounded-[1rem] bg-black">
@@ -123,11 +125,7 @@ export function Hero() {
                       {projects.map((project, index) => (
                         <button key={project.title} onClick={() => setActiveProject(index)} className={`group min-w-[150px] flex-1 text-left transition-all duration-300 ${activeProject === index ? "scale-[1.03]" : "opacity-65 hover:opacity-100"}`} aria-pressed={activeProject === index}>
                           <div className={`relative aspect-[1.55] overflow-hidden rounded-lg border ${activeProject === index ? "border-primary" : "border-white/15"}`}>
-                            {isMounted ? (
-                              <ScratchCard project={project} active={activeProject === index} onReveal={() => setActiveProject(index)} />
-                            ) : (
-                              <Image src={project.image} alt={`${project.title} project preview`} fill className="object-cover" />
-                            )}
+                            <ScratchCard project={project} active={activeProject === index} onReveal={() => setActiveProject(index)} />
                           </div>
                         </button>
                       ))}
