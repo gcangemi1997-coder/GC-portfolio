@@ -1,8 +1,9 @@
 "use client"
 
-import { useState, useEffect } from "react"
+import { useState } from "react"
 import { motion, AnimatePresence, useScroll, useMotionValueEvent } from "framer-motion"
-import { Menu, X, Code2 } from "lucide-react"
+import { Menu, X, Code2, Moon, Sun } from "lucide-react"
+import { useTheme } from "next-themes"
 import { Button } from "@/components/ui/button"
 
 const navLinks = [
@@ -16,7 +17,10 @@ export function Header() {
   const [isScrolled, setIsScrolled] = useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const [hidden, setHidden] = useState(false)
+  const { theme, setTheme } = useTheme()
   const { scrollY } = useScroll()
+
+  const isDark = theme === "dark"
 
   useMotionValueEvent(scrollY, "change", (latest) => {
     const previous = scrollY.getPrevious() ?? 0
@@ -68,6 +72,16 @@ export function Header() {
               />
             </span>
           </motion.a>
+
+          <Button
+            variant="outline"
+            size="icon"
+            className="ml-auto mr-2 size-9 rounded-full border-primary/30 bg-background/70"
+            onClick={() => setTheme(isDark ? "light" : "dark")}
+            aria-label={isDark ? "Switch to light mode" : "Switch to dark mode"}
+          >
+            {isDark ? <Sun data-icon="inline-start" /> : <Moon data-icon="inline-start" />}
+          </Button>
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center gap-1">
