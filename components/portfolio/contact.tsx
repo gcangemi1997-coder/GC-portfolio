@@ -83,7 +83,7 @@ export function Contact() {
             >
               <Sparkles className="h-4 w-4" />
             </motion.span>
-            05. What&apos;s Next?
+            04. What&apos;s Next?
           </motion.p>
           <motion.h2
             variants={itemVariants}

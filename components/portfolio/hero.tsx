@@ -1,8 +1,8 @@
 "use client"
 
 import Image from "next/image"
-import { motion, useScroll, useTransform } from "framer-motion"
-import { useRef, useState, type PointerEvent } from "react"
+import { motion } from "framer-motion"
+import { useState, type PointerEvent } from "react"
 import { ArrowDown, ArrowUpRight, Github, Sparkles } from "lucide-react"
 import { Button } from "@/components/ui/button"
 
@@ -83,18 +83,13 @@ function ScratchCard({ project, active, onReveal }: { project: (typeof projects)
 }
 
 export function Hero() {
-  const ref = useRef<HTMLElement>(null)
   const [activeProject, setActiveProject] = useState(0)
-  const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end start"] })
-  const screenScale = useTransform(scrollYProgress, [0.08, 0.7], [0.44, 1.68])
-  const screenY = useTransform(scrollYProgress, [0, 0.7], [40, -10])
-  const heroOpacity = useTransform(scrollYProgress, [0.55, 0.78], [1, 0])
 
   return (
-    <section ref={ref} className="relative min-h-[220vh] overflow-hidden" id="home">
-      <div className="sticky top-0 flex min-h-screen items-center justify-center overflow-hidden px-4 pt-20">
+    <section className="relative min-h-screen overflow-hidden" id="home">
+      <div className="flex min-h-screen items-center justify-center overflow-hidden px-4 pb-12 pt-20">
         <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,color-mix(in_oklab,var(--primary)_20%,transparent),transparent_28%),radial-gradient(circle_at_80%_0%,color-mix(in_oklab,var(--accent)_18%,transparent),transparent_32%)]" />
-        <motion.div className="relative z-10 mx-auto w-full max-w-[96rem]" style={{ opacity: heroOpacity }}>
+        <motion.div className="relative z-10 mx-auto w-full max-w-[96rem]">
           <div className="grid items-center gap-10 lg:grid-cols-[0.68fr_1.32fr]">
             <div className="max-w-xl">
               <motion.div initial={{ opacity: 0, y: 18 }} animate={{ opacity: 1, y: 0 }} className="mb-5 flex items-center gap-2 font-mono text-sm text-primary">
@@ -112,7 +107,7 @@ export function Hero() {
               </div>
             </div>
 
-            <motion.div style={{ scale: screenScale, y: screenY }} className="relative mx-auto w-full max-w-[82rem] origin-center">
+            <motion.div whileHover={{ y: [0, -10, 0], scale: 1.015 }} transition={{ duration: 0.7, ease: "easeOut" }} className="relative mx-auto w-full max-w-[82rem] origin-center">
               <div className="absolute -inset-10 rounded-full bg-primary/15 blur-3xl" />
               <div className="relative overflow-hidden rounded-[1.4rem] border border-white/15 bg-black/40 p-2 shadow-[0_40px_120px_-30px_color-mix(in_oklab,var(--primary)_45%,transparent)]">
                 <div className="relative aspect-[16/10] overflow-hidden rounded-[1rem] bg-black">

@@ -74,7 +74,7 @@ export function Experience() {
                 animate={isInView ? { scale: [1, 1.2, 1] } : {}}
                 transition={{ duration: 0.5, delay: 0.3 }}
               >
-                04.
+                03.
               </motion.span>{" "}
               Experience
             </h2>
