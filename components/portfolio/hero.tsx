@@ -59,23 +59,31 @@ function ScratchCard({ project, active, onReveal }: { project: (typeof projects)
 
   function scratch(event: PointerEvent<HTMLDivElement>) {
     const rect = event.currentTarget.getBoundingClientRect()
-    const point = { x: event.clientX - rect.left, y: event.clientY - rect.top }
+    const point = { x: ((event.clientX - rect.left) / rect.width) * 100, y: ((event.clientY - rect.top) / rect.height) * 100 }
     setScratches((current) => [...current.slice(-54), point])
     onReveal()
   }
 
-  const revealMask = scratches.length
-    ? scratches.map(({ x, y }) => `radial-gradient(circle 52px at ${x}px ${y}px, transparent 0 72%, #000 76%)`).join(",")
-    : "none"
+  const maskId = `scratch-mask-${project.title.toLowerCase().replace(/[^a-z0-9]+/g, "-")}`
 
   return (
     <div className={`relative aspect-[1.45] overflow-hidden rounded-xl border ${active ? "border-primary" : "border-white/15"}`}>
       <Image src={project.image} alt={`${project.title} project preview`} fill className="object-cover" />
-      <div
-        className="absolute inset-0 bg-gradient-to-br from-slate-300 via-slate-500 to-slate-700"
-        style={{ maskImage: revealMask, WebkitMaskImage: revealMask, filter: "blur(1px)" }}
-      />
-      <div className="absolute inset-0 cursor-crosshair" onPointerMove={scratch} onPointerDown={scratch} />
+      <svg className="pointer-events-none absolute inset-0 size-full" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
+        <defs>
+          <linearGradient id="scratch-cover" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stopColor="#cbd5e1" />
+            <stop offset="50%" stopColor="#64748b" />
+            <stop offset="100%" stopColor="#334155" />
+          </linearGradient>
+          <mask id={maskId}>
+            <rect width="100" height="100" fill="white" />
+            {scratches.map(({ x, y }, index) => <circle key={`${x}-${y}-${index}`} cx={x} cy={y} r="14" fill="black" />)}
+          </mask>
+        </defs>
+        <rect width="100" height="100" fill="url(#scratch-cover)" mask={`url(#${maskId})`} />
+      </svg>
+      <div className="absolute inset-0 cursor-crosshair" onPointerMove={scratch} onPointerDown={scratch} onPointerEnter={scratch} />
       <span className="pointer-events-none absolute left-3 top-3 text-[10px] font-semibold tracking-wide text-white drop-shadow-md">{project.title}</span>
       <span className="pointer-events-none absolute bottom-2 right-2 rounded-full bg-black/45 px-2 py-1 text-[9px] uppercase tracking-widest text-white/80">Passa per scoprire</span>
     </div>
