@@ -2,7 +2,7 @@
 
 import Image from "next/image"
 import { motion, useScroll, useTransform } from "framer-motion"
-import { useRef, useState } from "react"
+import { useRef, useState, type PointerEvent } from "react"
 import { ArrowDown, ArrowUpRight, Github, Sparkles } from "lucide-react"
 import { Button } from "@/components/ui/button"
 
@@ -54,6 +54,27 @@ const projects = [
   },
 ]
 
+function ScratchCard({ project, active, onReveal }: { project: (typeof projects)[number]; active: boolean; onReveal: () => void }) {
+  const [scratches, setScratches] = useState<Array<{ x: number; y: number }>>([])
+
+  function scratch(event: PointerEvent<HTMLDivElement>) {
+    const rect = event.currentTarget.getBoundingClientRect()
+    const point = { x: event.clientX - rect.left, y: event.clientY - rect.top }
+    setScratches((current) => [...current.slice(-34), point])
+    onReveal()
+  }
+
+  return (
+    <div className={`relative overflow-hidden rounded-xl border ${active ? "border-primary" : "border-white/15"}`}>
+      <Image src={project.image} alt={`${project.title} project preview`} fill className="object-cover" />
+      <div className="absolute inset-0 bg-gradient-to-br from-slate-500 via-slate-400 to-slate-600 transition-opacity duration-500" style={{ opacity: Math.max(0.22, 1 - scratches.length / 34) }} />
+      <div className="absolute inset-0" onPointerMove={scratch} onPointerDown={scratch} style={{ background: scratches.map(({ x, y }) => `radial-gradient(circle 34px at ${x}px ${y}px, transparent 0 72%, rgba(148,163,184,.96) 74%)`).join(",") }} aria-label={`Scratch to reveal ${project.title}`} role="button" tabIndex={0} />
+      <span className="absolute left-3 top-3 text-[10px] font-semibold tracking-wide text-white drop-shadow-md">{project.title}</span>
+      <span className="pointer-events-none absolute bottom-2 right-2 rounded-full bg-black/45 px-2 py-1 text-[9px] uppercase tracking-widest text-white/80">Scratch</span>
+    </div>
+  )
+}
+
 export function Hero() {
   const ref = useRef<HTMLElement>(null)
   const [activeProject, setActiveProject] = useState(0)
@@ -63,10 +84,10 @@ export function Hero() {
   const heroOpacity = useTransform(scrollYProgress, [0.55, 0.78], [1, 0])
 
   return (
-    <section ref={ref} className="relative min-h-[260vh] overflow-hidden" id="home">
+    <section ref={ref} className="relative min-h-[220vh] overflow-hidden" id="home">
       <div className="sticky top-0 flex min-h-screen items-center justify-center overflow-hidden px-4 pt-20">
         <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,color-mix(in_oklab,var(--primary)_20%,transparent),transparent_28%),radial-gradient(circle_at_80%_0%,color-mix(in_oklab,var(--accent)_18%,transparent),transparent_32%)]" />
-        <motion.div className="relative z-10 w-full max-w-7xl" style={{ opacity: heroOpacity }}>
+        <motion.div className="relative z-10 mx-auto w-full max-w-6xl" style={{ opacity: heroOpacity }}>
           <div className="grid items-center gap-10 lg:grid-cols-[0.82fr_1.18fr]">
             <div className="max-w-xl">
               <motion.div initial={{ opacity: 0, y: 18 }} animate={{ opacity: 1, y: 0 }} className="mb-5 flex items-center gap-2 font-mono text-sm text-primary">
@@ -84,7 +105,7 @@ export function Hero() {
               </div>
             </div>
 
-            <motion.div style={{ scale: screenScale, y: screenY }} className="relative mx-auto w-full max-w-3xl origin-center">
+            <motion.div style={{ scale: screenScale, y: screenY }} className="relative mx-auto w-full max-w-5xl origin-center">
               <div className="absolute -inset-10 rounded-full bg-primary/15 blur-3xl" />
               <div className="relative overflow-hidden rounded-[1.4rem] border border-white/15 bg-black/40 p-2 shadow-[0_40px_120px_-30px_color-mix(in_oklab,var(--primary)_45%,transparent)]">
                 <div className="relative aspect-[16/10] overflow-hidden rounded-[1rem] bg-black">
@@ -97,9 +118,7 @@ export function Hero() {
                       {projects.map((project, index) => (
                         <button key={project.title} onClick={() => setActiveProject(index)} className={`group min-w-[150px] flex-1 text-left transition-all duration-300 ${activeProject === index ? "scale-[1.03]" : "opacity-65 hover:opacity-100"}`} aria-pressed={activeProject === index}>
                           <div className={`relative aspect-[1.55] overflow-hidden rounded-lg border ${activeProject === index ? "border-primary" : "border-white/15"}`}>
-                            <Image src={project.image} alt={`${project.title} project preview`} fill className="object-cover transition-transform duration-500 group-hover:scale-110" />
-                            <div className={`absolute inset-0 bg-gradient-to-br ${project.accent} mix-blend-multiply opacity-55`} />
-                            <span className="absolute left-2 top-2 text-[9px] font-medium tracking-wide text-white">{project.title}</span>
+                            <ScratchCard project={project} active={activeProject === index} onReveal={() => setActiveProject(index)} />
                           </div>
                         </button>
                       ))}
