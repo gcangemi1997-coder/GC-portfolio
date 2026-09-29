@@ -3,7 +3,7 @@
 import Image from "next/image"
 import { motion, useScroll, useTransform } from "framer-motion"
 import { useRef, useState } from "react"
-import { ArrowDown, ArrowUpRight, Github, Linkedin, Mail, Sparkles } from "lucide-react"
+import { ArrowDown, ArrowUpRight, Github, Sparkles } from "lucide-react"
 import { Button } from "@/components/ui/button"
 
 const projects = [
@@ -11,7 +11,7 @@ const projects = [
     title: "MMG Burger",
     problem: "A complete ordering and shop-management experience for a sandwich business, bringing menu discovery, orders, and operations into one fast web app.",
     tech: ["React", "Node.js", "Express", "MongoDB", "Vercel"],
-    image: "/images/portfolio-preview.png",
+    image: "/images/mmg-burger-preview.png",
     demo: "https://mmg-burger.vercel.app/",
     github: "https://github.com/gcangemi1997-coder/MMG_Burger",
     accent: "from-orange-400/80 to-rose-500/80",
@@ -20,7 +20,7 @@ const projects = [
     title: "LookBook AI",
     problem: "An AI-assisted way to estimate the value of pre-owned clothing, helping people make faster, more informed resale decisions.",
     tech: ["React", "Node.js", "AI", "MongoDB", "Vercel"],
-    image: "/images/portfolio-preview.png",
+    image: "/images/lookbook-ai-preview.png",
     demo: "https://lookbook-ai.vercel.app/",
     github: "https://github.com/gcangemi1997-coder/lookbook-AI",
     accent: "from-fuchsia-400/80 to-violet-500/80",
@@ -35,10 +35,10 @@ const projects = [
     accent: "from-cyan-400/80 to-blue-500/80",
   },
   {
-    title: "weather_dashboard",
+    title: "Tempo Lodigiano",
     problem: "A clear, useful weather dashboard that makes live forecasts and changing conditions easier to understand at a glance.",
     tech: ["JavaScript", "HTML", "CSS", "Weather API"],
-    image: "/images/greenearth.png",
+    image: "/images/tempo-lodigiano-preview.png",
     demo: "https://weather-dashboard-gcangemi.vercel.app/",
     github: "https://github.com/gcangemi1997-coder/weather_dashboard",
     accent: "from-amber-300/80 to-cyan-400/80",
@@ -58,7 +58,7 @@ export function Hero() {
   const ref = useRef<HTMLElement>(null)
   const [activeProject, setActiveProject] = useState(0)
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end start"] })
-  const screenScale = useTransform(scrollYProgress, [0.08, 0.7], [0.72, 1.16])
+  const screenScale = useTransform(scrollYProgress, [0.08, 0.7], [0.52, 1.42])
   const screenY = useTransform(scrollYProgress, [0, 0.7], [40, -10])
   const heroOpacity = useTransform(scrollYProgress, [0.55, 0.78], [1, 0])
 
@@ -81,11 +81,6 @@ export function Hero() {
               <div className="mt-8 flex flex-wrap gap-3">
                 <Button asChild size="lg"><a href="#selected-work">Explore my work <ArrowDown data-icon="inline-end" /></a></Button>
                 <Button asChild variant="outline" size="lg"><a href="/resume.pdf" download>Download CV</a></Button>
-              </div>
-              <div className="mt-9 flex items-center gap-5 text-muted-foreground">
-                <a href="https://github.com/gcangemi1997-coder" target="_blank" rel="noreferrer" aria-label="GitHub profile"><Github className="size-5 transition-colors hover:text-primary" /></a>
-                <a href="https://www.linkedin.com/in/giorgio-cangemi" target="_blank" rel="noreferrer" aria-label="LinkedIn profile"><Linkedin className="size-5 transition-colors hover:text-primary" /></a>
-                <a href="mailto:g.cangemi1997@gmail.com" aria-label="Email Giorgio"><Mail className="size-5 transition-colors hover:text-primary" /></a>
               </div>
             </div>
 
