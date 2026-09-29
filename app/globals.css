@@ -4,26 +4,26 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
-  /* Dark theme with teal accent - inspired by your original portfolio */
-  --background: oklch(0.15 0.01 260);
-  --foreground: oklch(0.98 0 0);
-  --card: oklch(0.18 0.01 260);
-  --card-foreground: oklch(0.98 0 0);
-  --popover: oklch(0.18 0.01 260);
-  --popover-foreground: oklch(0.98 0 0);
-  --primary: oklch(0.85 0.18 165);
-  --primary-foreground: oklch(0.15 0.01 260);
-  --secondary: oklch(0.22 0.01 260);
-  --secondary-foreground: oklch(0.98 0 0);
-  --muted: oklch(0.25 0.01 260);
-  --muted-foreground: oklch(0.65 0 0);
-  --accent: oklch(0.85 0.18 165);
-  --accent-foreground: oklch(0.15 0.01 260);
+  /* Deep ink canvas with electric cyan and violet accents */
+  --background: oklch(0.12 0.035 275);
+  --foreground: oklch(0.97 0.015 255);
+  --card: oklch(0.17 0.04 275);
+  --card-foreground: oklch(0.97 0.015 255);
+  --popover: oklch(0.17 0.04 275);
+  --popover-foreground: oklch(0.97 0.015 255);
+  --primary: oklch(0.82 0.16 190);
+  --primary-foreground: oklch(0.12 0.035 275);
+  --secondary: oklch(0.22 0.045 275);
+  --secondary-foreground: oklch(0.97 0.015 255);
+  --muted: oklch(0.25 0.04 275);
+  --muted-foreground: oklch(0.72 0.025 255);
+  --accent: oklch(0.72 0.2 305);
+  --accent-foreground: oklch(0.97 0.015 255);
   --destructive: oklch(0.577 0.245 27.325);
   --destructive-foreground: oklch(0.577 0.245 27.325);
-  --border: oklch(0.30 0.01 260);
-  --input: oklch(0.22 0.01 260);
-  --ring: oklch(0.85 0.18 165);
+  --border: oklch(0.32 0.045 275);
+  --input: oklch(0.22 0.045 275);
+  --ring: oklch(0.82 0.16 190);
   --chart-1: oklch(0.646 0.222 41.116);
   --chart-2: oklch(0.6 0.118 184.704);
   --chart-3: oklch(0.398 0.07 227.392);
